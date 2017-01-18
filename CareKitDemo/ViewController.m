@@ -10,9 +10,10 @@
 #import <CareKit/CareKit.h>
 #import <ResearchKit/ResearchKit.h>
 
-@interface ViewController ()<OCKSymptomTrackerViewControllerDelegate>
+@interface ViewController ()<OCKSymptomTrackerViewControllerDelegate,ORKTaskViewControllerDelegate>
 
 @property (nonatomic, strong) OCKCarePlanStore* carePlanStore;
+@property (nonatomic, weak) OCKSymptomTrackerViewController* symptomTrackerViewController;
 
 @end
 
@@ -115,7 +116,7 @@
                                                                        groupIdentifier:nil
                                                                                  title:@"Temperature"
                                                                                   text:@"Oral"
-                                                                             tintColor:[UIColor yellowColor]
+                                                                             tintColor:[UIColor orangeColor]
                                                                       resultResettable:YES
                                                                               schedule:[OCKCareSchedule dailyScheduleWithStartDate:[self firstDateOfCurrentWeek] occurrencesPerDay:1]
                                                                               userInfo:@{@"ORKTask":[self makeTemperatureAssessmentTask]}];
@@ -152,7 +153,10 @@
     viewController.progressRingTintColor = [UIColor purpleColor];
     viewController.delegate = self;
     [self.navigationController pushViewController:viewController animated:YES];
+    _symptomTrackerViewController = viewController;
 }
+
+//OCKSymptomTrackerViewControllerDelegate
 
 - (void)symptomTrackerViewController:(OCKSymptomTrackerViewController *)viewController didSelectRowWithAssessmentEvent:(OCKCarePlanEvent *)assessmentEvent{
     NSDictionary* userInfo = assessmentEvent.activity.userInfo;
@@ -160,9 +164,34 @@
         ORKOrderedTask* task = userInfo[@"ORKTask"];
         if (task) {
             ORKTaskViewController* viewController = [[ORKTaskViewController alloc] initWithTask:task taskRunUUID:nil];
+            viewController.delegate = self;
             [self presentViewController:viewController animated:YES completion:nil];
+            
         }
     }
+}
+
+//ORKTaskViewControllerDelegate
+- (void)taskViewController:(ORKTaskViewController *)taskViewController didFinishWithReason:(ORKTaskViewControllerFinishReason)reason error:(NSError *)error{
+    
+    if (reason == ORKTaskViewControllerFinishReasonCompleted) {
+        OCKCarePlanEvent* event = _symptomTrackerViewController.lastSelectedAssessmentEvent;
+        if(event){
+            ORKStepResult* firstResult = (ORKStepResult*)taskViewController.result.firstResult;
+            ORKResult* stepResult = firstResult.results.firstObject;
+            if([stepResult isKindOfClass:ORKNumericQuestionResult.class]){
+                ORKNumericQuestionResult* numbericResult = (ORKNumericQuestionResult*) stepResult;
+                NSNumber* answer = numbericResult.numericAnswer;
+                OCKCarePlanEventResult* eventResult = [[OCKCarePlanEventResult alloc] initWithValueString:answer.stringValue unitString:numbericResult.unit userInfo:nil];
+                [_carePlanStore updateEvent:event withResult:eventResult state:OCKCarePlanEventStateCompleted completion:^(BOOL success, OCKCarePlanEvent * _Nullable event, NSError * _Nullable error) {
+                    if(!success){
+                        NSLog(@"Error:%@",error.localizedDescription);
+                    }
+                }];
+            }
+        }
+    }
+    [taskViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end
