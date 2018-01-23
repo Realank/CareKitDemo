@@ -1,5 +1,6 @@
 /*
- Copyright (c) 2016, Apple Inc. All rights reserved.
+ Copyright (c) 2017, Apple Inc. All rights reserved.
+ Copyright (c) 2017, Erik Hornberger. All rights reserved.
  
  Redistribution and use in source and binary forms, with or without modification,
  are permitted provided that the following conditions are met:
@@ -67,6 +68,29 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)symptomTrackerViewController:(OCKSymptomTrackerViewController *)viewController willDisplayEvents:(NSArray<NSArray<OCKCarePlanEvent*>*>*)events dateComponents:(NSDateComponents *)dateComponents;
 
+/**
+ Asks the delegate if the symptom tracker view controller should enable pull-to-refresh behavior on the activities list. If not implemented,
+ pull-to-refresh will not be enabled.
+ 
+ If returned YES, the `symptomTrackerViewController:didActivatePullToRefreshControl:` method should be implemented to provide custom
+ refreshing behavior when triggered by the user.
+ 
+ @param viewController              The view controller providing the callback.
+ */
+- (BOOL)shouldEnablePullToRefreshInSymptomTrackerViewController:(OCKSymptomTrackerViewController *)viewController;
+
+/**
+ Tells the delegate the user has triggered pull to refresh on the activities list.
+ 
+ Provides the opportunity to refresh data in the local store by, for example, fetching from a cloud data store.
+ This method should always be implmented in cases where `shouldEnablePullToRefreshInSymptomTrackerViewController:` might return YES.
+ 
+ @param viewController              The view controller providing the callback.
+ @param refreshControl              The refresh control which has been triggered, where `isRefreshing` should always be YES.
+                                    It is the developers responsibility to call `endRefreshing` as appropriate, on the main thread.
+ */
+- (void)symptomTrackerViewController:(OCKSymptomTrackerViewController *)viewController didActivatePullToRefreshControl:(UIRefreshControl *)refreshControl;
+
 @end
 
 
@@ -113,18 +137,54 @@ OCK_CLASS_AVAILABLE
 @property (nonatomic, readonly, nullable) OCKCarePlanEvent *lastSelectedAssessmentEvent;
 
 /**
+ A reference to the `UITableView` contained in the view controller
+ */
+@property (nonatomic, readonly, nonnull) UITableView *tableView;
+
+/**
  The tint color that will be used to fill the ring view.
  
  If the value is not specified, the app's tint color is used.
  */
-@property (nonatomic, null_resettable) UIColor *progressRingTintColor;
+@property (nonatomic, null_resettable) UIColor *glyphTintColor;
 
 /**
- A boolean to show the edge indicators.
+ The string that will be used as the Symptom Tracker header title.
  
- The default value is NO.
+ If the value is not specified, CareKit's default string ("Activity Completion") is used.
  */
-@property (nonatomic) BOOL showEdgeIndicators;
+@property (nonatomic, null_resettable) NSString *headerTitle;
+
+/**
+ The glyph type for the header view (see OCKGlyphType).
+ */
+@property (nonatomic) OCKGlyphType glyphType;
+
+/**
+ Image name string if using a custom image. Cannot access image name once image has been created
+ and we need a way to access that to send the custom image name string to the watch
+ */
+@property (nonatomic) NSString *customGlyphImageName;
+
+/**
+ The property that allows activities to be grouped.
+ 
+ If true, the activities will be grouped by groupIdentifier into sections,
+ otherwise the activities will all be in one section and groupIdentifier is ignored.
+  
+ The default is true.
+ */
+@property (nonatomic) BOOL isGrouped;
+
+/**
+ The property that allows activities to be sorted.
+ 
+ If true, the activities will be sorted alphabetically by title and by groupIdentifier if isGrouped is true,
+ otherwise the activities will be sorted in the order they are added in the care plan store.
+ 
+ The default is true.
+ */
+@property (nonatomic) BOOL isSorted;
 
 @end
 

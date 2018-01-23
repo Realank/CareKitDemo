@@ -175,6 +175,7 @@ static NSString *imageTagFromImage (UIImage *image) {
 
 static NSString *imageTagFromView (UIView *view) {
     UIGraphicsBeginImageContextWithOptions(view.frame.size, YES, 0.0);
+    [view layoutIfNeeded];
     [view.layer renderInContext:UIGraphicsGetCurrentContext()];
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
@@ -336,6 +337,22 @@ static NSString *imageTagFromView (UIView *view) {
         html = [html stringByAppendingString:@"</table>"];
     }
     return html;
+}
+
+@end
+
+
+@implementation OCKDocumentElementBreak
+
+- (NSString *)HTMLContent {
+    NSString *html = @"";
+    html = [html stringByAppendingString:@"<div style=\"page-break-before:always\">&nbsp;</div>"];
+    return html;
+}
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+    OCKDocumentElementBreak *element = [[[self class] allocWithZone:zone] init];
+    return element;
 }
 
 @end
