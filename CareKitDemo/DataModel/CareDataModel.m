@@ -150,7 +150,7 @@
     
 
     
-    OCKCarePlanActivity* bloodPressureActivity = [OCKCarePlanActivity assessmentWithIdentifier:@"Blood Pressure"
+    OCKCarePlanActivity* bloodPressureActivity = [OCKCarePlanActivity assessmentWithIdentifier:kActivityIdentifierBP
                                                                              groupIdentifier:@"Vitals"
                                                                                        title:@"Blood Pressure"
                                                                                         text:@"mmHg"
@@ -168,7 +168,7 @@
     OCKCarePlanThreshold* thresholdPerfect = [OCKCarePlanThreshold numericThresholdWithValue:@70 type:OCKCarePlanThresholdTypeNumericRangeInclusive upperValue:@100 title:@"Healthy blood glucose."];
     OCKCarePlanThreshold* thresholdBad = [OCKCarePlanThreshold numericThresholdWithValue:@180 type:OCKCarePlanThresholdTypeNumericGreaterThanOrEqual upperValue:nil title:@"High blood glucose."];
     
-    OCKCarePlanActivity* bloodGlucoseActivity = [OCKCarePlanActivity assessmentWithIdentifier:@"Blood Glucose"
+    OCKCarePlanActivity* bloodGlucoseActivity = [OCKCarePlanActivity assessmentWithIdentifier:kActivityIdentifierBG
                                                                               groupIdentifier:@"Vitals"
                                                                                         title:@"Blood Glucose"
                                                                                          text:@"mg/dL"
@@ -181,7 +181,7 @@
                                                                                                 }
                                                                                    thresholds:@[@[thresholdPerfect,thresholdBad]]
                                                                                      optional:NO];
-    OCKCarePlanActivity* temperatureActivity = [OCKCarePlanActivity assessmentWithIdentifier:@"Temperature"
+    OCKCarePlanActivity* temperatureActivity = [OCKCarePlanActivity assessmentWithIdentifier:kActivityIdentifierTH
                                                                              groupIdentifier:@"Vitals"
                                                                                        title:@"Temperature"
                                                                                         text:@"Oral"

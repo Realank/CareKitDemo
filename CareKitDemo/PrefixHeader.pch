@@ -18,4 +18,7 @@
 #import "CarePlanStroreManager.h"
 #import "CommTool.h"
 
+#define kActivityIdentifierBP @"Blood Pressure"
+#define kActivityIdentifierBG @"Blood Glucose"
+#define kActivityIdentifierTH @"Temperature"
 #endif /* PrefixHeader_pch */

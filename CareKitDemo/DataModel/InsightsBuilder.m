@@ -10,6 +10,8 @@
 @interface InsightsBuilder()
 
 @property (nonatomic, strong) NSMutableDictionary* temperatureValuesM;
+@property (nonatomic, strong) NSMutableDictionary* bpValuesM;
+@property (nonatomic, strong) NSMutableDictionary* bgValuesM;
 @property (nonatomic, strong) NSMutableArray* datesM;
 @property (nonatomic, strong) NSMutableArray* completionsM;
 @property (nonatomic, strong) NSMutableArray* completionsLabelM;
@@ -73,7 +75,9 @@
     
     
     _temperatureValuesM = [NSMutableDictionary dictionary];
-
+    _bpValuesM = [NSMutableDictionary dictionary];
+    _bgValuesM = [NSMutableDictionary dictionary];
+    
     for (OCKCarePlanActivity* activity in [CareDataModel sharedInstance].activities) {
         [self fetchEventResultWithActivity:activity];
     }
@@ -116,6 +120,10 @@
     NSString* unit = resultDict[@"unit"];
     if ([type isEqualToString:@"th"]) {
         _temperatureValuesM[date] = resultDict;
+    }else if ([type isEqualToString:@"bp"]){
+        _bpValuesM[date] = resultDict;
+    }else if ([type isEqualToString:@"bg"]){
+        _bgValuesM[date] = resultDict;
     }
 }
 
@@ -141,28 +149,67 @@
 - (void)drawChart{
     NSMutableArray* temperatureValues = [NSMutableArray array];
     NSMutableArray* temperatureValueLables = [NSMutableArray array];
+    NSMutableArray* bpSysValues = [NSMutableArray array];
+    NSMutableArray* bpSysValueLables = [NSMutableArray array];
+    NSMutableArray* bpDiaValues = [NSMutableArray array];
+    NSMutableArray* bpDiaValueLables = [NSMutableArray array];
+    NSMutableArray* bgValues = [NSMutableArray array];
+    NSMutableArray* bgValueLables = [NSMutableArray array];
     NSMutableArray* dateStrings = [NSMutableArray array];
     for (NSDateComponents* date in _datesM) {
         NSDictionary* resultDict = _temperatureValuesM[date];
         if (resultDict) {
             NSString* label = resultDict[@"valueString"];
-            NSDateComponents* date = resultDict[@"date"];
             NSArray* values = resultDict[@"values"];
-            NSString* type = resultDict[@"type"];
-            NSString* unit = resultDict[@"unit"];
             [temperatureValues addObject:values.firstObject];
             [temperatureValueLables addObject:label];
         }else{
             [temperatureValues addObject:@0];
             [temperatureValueLables addObject:@"N/A"];
         }
+        
+        resultDict = _bpValuesM[date];
+        if (resultDict) {
+            NSArray* values = resultDict[@"values"];
+            NSNumber* sys = values[0];
+            NSNumber* dia = values[1];
+            [bpSysValues addObject:sys];
+            [bpDiaValues addObject:dia];
+            [bpSysValueLables addObject:sys.stringValue];
+            [bpDiaValueLables addObject:dia.stringValue];
+        }else{
+            [bpSysValues addObject:@0];
+            [bpDiaValues addObject:@0];
+            [bpSysValueLables addObject:@"N/A"];
+            [bpDiaValueLables addObject:@"N/A"];
+        }
+        
+        resultDict = _bgValuesM[date];
+        if (resultDict) {
+            NSString* label = resultDict[@"valueString"];
+            NSArray* values = resultDict[@"values"];
+            [bgValues addObject:values.firstObject];
+            [bgValueLables addObject:label];
+        }else{
+            [bgValues addObject:@0];
+            [bgValueLables addObject:@"N/A"];
+        }
+        
         NSDate* nsdate = [[NSCalendar currentCalendar] dateFromComponents:date];
         NSString* dateString = [NSDateFormatter localizedStringFromDate:nsdate dateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterNoStyle];
         [dateStrings addObject:dateString];
     }
-    OCKBarSeries* progressBarSeries = [[OCKBarSeries alloc] initWithTitle:@"completion" values:_completionsM valueLabels:_completionsLabelM tintColor:[UIColor lightGrayColor]];
-    OCKBarSeries* temperatureBarSeries = [[OCKBarSeries alloc] initWithTitle:@"temperature" values:temperatureValues valueLabels:temperatureValueLables tintColor:[UIColor redColor]];
-    OCKBarChart* barChart = [[OCKBarChart alloc] initWithTitle:@"Training Plan" text:@"Completions" tintColor:[UIColor greenColor] axisTitles:dateStrings axisSubtitles:nil dataSeries:@[progressBarSeries,temperatureBarSeries]];
+    OCKBarSeries* progressBarSeries = [[OCKBarSeries alloc] initWithTitle:@"Completion" values:_completionsM valueLabels:_completionsLabelM tintColor:[UIColor lightGrayColor]];
+
+    
+    OCKBarSeries* bpSysBarSeries = [[OCKBarSeries alloc] initWithTitle:@"SYS" values:bpSysValues valueLabels:bpSysValueLables tintColor:[UIColor redColor]];
+    OCKBarSeries* bpDiaBarSeries = [[OCKBarSeries alloc] initWithTitle:@"DIA" values:bpDiaValues valueLabels:bpDiaValueLables tintColor:[UIColor redColor]];
+    
+    OCKBarSeries* bgBarSeries = [[OCKBarSeries alloc] initWithTitle:@"Blucose" values:bgValues valueLabels:bgValueLables tintColor:[UIColor blueColor]];
+    
+    OCKBarSeries* thBarSeries = [[OCKBarSeries alloc] initWithTitle:@"Temperature" values:temperatureValues valueLabels:temperatureValueLables tintColor:[UIColor orangeColor]];
+    
+    OCKBarChart* barChart = [[OCKBarChart alloc] initWithTitle:@"Activities" text:@"status" tintColor:[UIColor greenColor] axisTitles:dateStrings axisSubtitles:nil dataSeries:@[progressBarSeries,bpSysBarSeries,bpDiaBarSeries,bgBarSeries,thBarSeries]];
     _insights = @[barChart];
     if (_delegate) {
         dispatch_async(dispatch_get_main_queue(), ^{

@@ -55,9 +55,9 @@
 
 - (OCKInsightsViewController *)insightsViewController{
     if (!_insightsViewController) {
-        OCKPatientWidget* widget1 = [OCKPatientWidget defaultWidgetWithActivityIdentifier:@"Blood Pressure" tintColor:[UIColor redColor]];
-        OCKPatientWidget* widget2 = [OCKPatientWidget defaultWidgetWithActivityIdentifier:@"Blood Glucose" tintColor:[UIColor redColor]];
-        OCKPatientWidget* widget3 = [OCKPatientWidget defaultWidgetWithActivityIdentifier:@"Temperature" tintColor:[UIColor redColor]];
+        OCKPatientWidget* widget1 = [OCKPatientWidget defaultWidgetWithActivityIdentifier:kActivityIdentifierBP tintColor:[UIColor redColor]];
+        OCKPatientWidget* widget2 = [OCKPatientWidget defaultWidgetWithActivityIdentifier:kActivityIdentifierBG tintColor:[UIColor redColor]];
+        OCKPatientWidget* widget3 = [OCKPatientWidget defaultWidgetWithActivityIdentifier:kActivityIdentifierTH tintColor:[UIColor redColor]];
         OCKInsightsViewController* vc = [[OCKInsightsViewController alloc] initWithInsightItems:[InsightsBuilder sharedInstance].insights patientWidgets:@[widget1,widget2,widget3] thresholds:nil store:[self carePlanStore]];
         vc.title = @"Insights";
         vc.tabBarItem = [[UITabBarItem alloc] initWithTitle:vc.title
