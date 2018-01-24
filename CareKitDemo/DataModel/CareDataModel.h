@@ -7,8 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <CareKit/CareKit.h>
-#import <ResearchKit/ResearchKit.h>
+
 
 
 @interface CareDataModel : NSObject

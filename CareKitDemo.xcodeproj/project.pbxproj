@@ -14,14 +14,15 @@
 		8C203F821E2DB98F00A0C5F1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C203F801E2DB98F00A0C5F1 /* LaunchScreen.storyboard */; };
 		8C203F8D1E2DB98F00A0C5F1 /* CareKitDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C203F8C1E2DB98F00A0C5F1 /* CareKitDemoTests.m */; };
 		8C203F981E2DB98F00A0C5F1 /* CareKitDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C203F971E2DB98F00A0C5F1 /* CareKitDemoUITests.m */; };
-		8C7785641E2DC3D400A16D0A /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C203FBD1E2DBB3200A0C5F1 /* HealthKit.framework */; };
 		8C77856A1E2DC40100A16D0A /* CareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C77855C1E2DC38D00A16D0A /* CareKit.framework */; };
 		8C77856B1E2DC40100A16D0A /* CareKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8C77855C1E2DC38D00A16D0A /* CareKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8C83D58F2016C7BE00C20A68 /* ResearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C83D58C2016C75600C20A68 /* ResearchKit.framework */; };
 		8C83D5902016C7BE00C20A68 /* ResearchKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8C83D58C2016C75600C20A68 /* ResearchKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		8C83D5962016D14400C20A68 /* CareDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C83D5952016D14400C20A68 /* CareDataModel.m */; };
-		8C83D59A2016D5F800C20A68 /* CarePlanStroreManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C83D5992016D5F800C20A68 /* CarePlanStroreManager.m */; };
 		8C83D59D2016D7F100C20A68 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C83D59C2016D7F100C20A68 /* HomeViewController.m */; };
+		8CD07A5F20171DAF004F3A7A /* CareDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD07A5B20171DAF004F3A7A /* CareDataModel.m */; };
+		8CD07A6020171DAF004F3A7A /* InsightsBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD07A5C20171DAF004F3A7A /* InsightsBuilder.m */; };
+		8CD07A6120171DAF004F3A7A /* CarePlanStroreManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD07A5D20171DAF004F3A7A /* CarePlanStroreManager.m */; };
+		8CD07A6D201831FB004F3A7A /* CommTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD07A6C201831FB004F3A7A /* CommTool.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -114,15 +115,19 @@
 		8C203F971E2DB98F00A0C5F1 /* CareKitDemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CareKitDemoUITests.m; sourceTree = "<group>"; };
 		8C203F991E2DB98F00A0C5F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8C203FBB1E2DBB3100A0C5F1 /* CareKitDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CareKitDemo.entitlements; sourceTree = "<group>"; };
-		8C203FBD1E2DBB3200A0C5F1 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		8C7785551E2DC38D00A16D0A /* CareKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CareKit.xcodeproj; path = "Libraries/CareKit-master/CareKit.xcodeproj"; sourceTree = "<group>"; };
 		8C83D5852016C75600C20A68 /* ResearchKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ResearchKit.xcodeproj; path = "Libraries/ResearchKit-master/ResearchKit.xcodeproj"; sourceTree = "<group>"; };
-		8C83D5942016D14400C20A68 /* CareDataModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CareDataModel.h; path = DataModel/CareDataModel.h; sourceTree = "<group>"; };
-		8C83D5952016D14400C20A68 /* CareDataModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = CareDataModel.m; path = DataModel/CareDataModel.m; sourceTree = "<group>"; };
-		8C83D5982016D5F800C20A68 /* CarePlanStroreManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CarePlanStroreManager.h; sourceTree = "<group>"; };
-		8C83D5992016D5F800C20A68 /* CarePlanStroreManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CarePlanStroreManager.m; sourceTree = "<group>"; };
 		8C83D59B2016D7F100C20A68 /* HomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		8C83D59C2016D7F100C20A68 /* HomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		8CD07A5920171DAF004F3A7A /* InsightsBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InsightsBuilder.h; sourceTree = "<group>"; };
+		8CD07A5A20171DAF004F3A7A /* CarePlanStroreManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarePlanStroreManager.h; sourceTree = "<group>"; };
+		8CD07A5B20171DAF004F3A7A /* CareDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CareDataModel.m; sourceTree = "<group>"; };
+		8CD07A5C20171DAF004F3A7A /* InsightsBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InsightsBuilder.m; sourceTree = "<group>"; };
+		8CD07A5D20171DAF004F3A7A /* CarePlanStroreManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarePlanStroreManager.m; sourceTree = "<group>"; };
+		8CD07A5E20171DAF004F3A7A /* CareDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CareDataModel.h; sourceTree = "<group>"; };
+		8CD07A6820172F7E004F3A7A /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		8CD07A6B201831FB004F3A7A /* CommTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommTool.h; sourceTree = "<group>"; };
+		8CD07A6C201831FB004F3A7A /* CommTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CommTool.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,7 +136,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8C77856A1E2DC40100A16D0A /* CareKit.framework in Frameworks */,
-				8C7785641E2DC3D400A16D0A /* HealthKit.framework in Frameworks */,
 				8C83D58F2016C7BE00C20A68 /* ResearchKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -177,7 +181,8 @@
 		8C203F711E2DB98F00A0C5F1 /* CareKitDemo */ = {
 			isa = PBXGroup;
 			children = (
-				8C83D5932016D10700C20A68 /* DataModel */,
+				8CD07A6420172F30004F3A7A /* Util */,
+				8CD07A5820171DAF004F3A7A /* DataModel */,
 				8C203FBB1E2DBB3100A0C5F1 /* CareKitDemo.entitlements */,
 				8C203F751E2DB98F00A0C5F1 /* AppDelegate.h */,
 				8C203F761E2DB98F00A0C5F1 /* AppDelegate.m */,
@@ -187,6 +192,7 @@
 				8C203F7E1E2DB98F00A0C5F1 /* Assets.xcassets */,
 				8C203F801E2DB98F00A0C5F1 /* LaunchScreen.storyboard */,
 				8C203F831E2DB98F00A0C5F1 /* Info.plist */,
+				8CD07A6820172F7E004F3A7A /* PrefixHeader.pch */,
 				8C203F721E2DB98F00A0C5F1 /* Supporting Files */,
 			);
 			path = CareKitDemo;
@@ -223,7 +229,6 @@
 		8C203FBC1E2DBB3200A0C5F1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				8C203FBD1E2DBB3200A0C5F1 /* HealthKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -246,15 +251,26 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		8C83D5932016D10700C20A68 /* DataModel */ = {
+		8CD07A5820171DAF004F3A7A /* DataModel */ = {
 			isa = PBXGroup;
 			children = (
-				8C83D5942016D14400C20A68 /* CareDataModel.h */,
-				8C83D5952016D14400C20A68 /* CareDataModel.m */,
-				8C83D5982016D5F800C20A68 /* CarePlanStroreManager.h */,
-				8C83D5992016D5F800C20A68 /* CarePlanStroreManager.m */,
+				8CD07A5E20171DAF004F3A7A /* CareDataModel.h */,
+				8CD07A5B20171DAF004F3A7A /* CareDataModel.m */,
+				8CD07A5920171DAF004F3A7A /* InsightsBuilder.h */,
+				8CD07A5C20171DAF004F3A7A /* InsightsBuilder.m */,
+				8CD07A5A20171DAF004F3A7A /* CarePlanStroreManager.h */,
+				8CD07A5D20171DAF004F3A7A /* CarePlanStroreManager.m */,
 			);
-			name = DataModel;
+			path = DataModel;
+			sourceTree = "<group>";
+		};
+		8CD07A6420172F30004F3A7A /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				8CD07A6B201831FB004F3A7A /* CommTool.h */,
+				8CD07A6C201831FB004F3A7A /* CommTool.m */,
+			);
+			path = Util;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -331,7 +347,7 @@
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.HealthKit = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};
@@ -442,10 +458,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8C83D5962016D14400C20A68 /* CareDataModel.m in Sources */,
-				8C83D59A2016D5F800C20A68 /* CarePlanStroreManager.m in Sources */,
+				8CD07A5F20171DAF004F3A7A /* CareDataModel.m in Sources */,
 				8C203F771E2DB98F00A0C5F1 /* AppDelegate.m in Sources */,
+				8CD07A6120171DAF004F3A7A /* CarePlanStroreManager.m in Sources */,
+				8CD07A6020171DAF004F3A7A /* InsightsBuilder.m in Sources */,
 				8C203F741E2DB98F00A0C5F1 /* main.m in Sources */,
+				8CD07A6D201831FB004F3A7A /* CommTool.m in Sources */,
 				8C83D59D2016D7F100C20A68 /* HomeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -618,8 +636,8 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = CareKitDemo/CareKitDemo.entitlements;
 				DEVELOPMENT_TEAM = 275X96KVEB;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/CareKitDemo/PrefixHeader.pch";
 				INFOPLIST_FILE = CareKitDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.realank.CareKitDemo;
@@ -632,8 +650,8 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = CareKitDemo/CareKitDemo.entitlements;
 				DEVELOPMENT_TEAM = 275X96KVEB;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/CareKitDemo/PrefixHeader.pch";
 				INFOPLIST_FILE = CareKitDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.realank.CareKitDemo;

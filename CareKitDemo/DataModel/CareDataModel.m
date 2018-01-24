@@ -27,14 +27,7 @@
     return self;
 }
 
-- (NSDateComponents*)firstDateOfCurrentWeek{
-    NSDate *beginningOfWeek = nil;
-    NSCalendar* gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
-    gregorian.locale = [NSLocale currentLocale];
-    [gregorian rangeOfUnit:NSCalendarUnitWeekOfYear startDate:&beginningOfWeek interval:nil forDate:[NSDate date]];
-    NSDateComponents* dateComponents = [gregorian components:NSCalendarUnitEra|NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay fromDate:beginningOfWeek];
-    return dateComponents;
-}
+
 
 - (ORKOrderedTask*)makePulseAssessmentTask{
     HKQuantityType* quantityType = [HKQuantityType quantityTypeForIdentifier:HKQuantityTypeIdentifierHeartRate];
@@ -121,7 +114,7 @@
                                                                                 tintColor:[UIColor  orangeColor]
                                                                              instructions:@"Jog at a moderate pace for an hour. If there isn't an actual one, imagine a horde of zombies behind you."
                                                                                  imageURL:nil
-                                                                                 schedule:[OCKCareSchedule dailyScheduleWithStartDate:[self firstDateOfCurrentWeek] occurrencesPerDay:2]
+                                                                                 schedule:[OCKCareSchedule dailyScheduleWithStartDate:[CommTool firstDateOfCurrentWeek] occurrencesPerDay:2]
                                                                          resultResettable:YES
                                                                                  userInfo:nil];
     //舒展活动
@@ -133,7 +126,7 @@
                                                                                   tintColor:[UIColor  orangeColor]
                                                                                instructions:@"Stretch and warm up muscles in your arms, legs and back before any expected burst of activity. This is especially important if, for example, you're heading down a hill to inspect a Hostess truck."
                                                                                    imageURL:nil
-                                                                                   schedule:[OCKCareSchedule dailyScheduleWithStartDate:[self firstDateOfCurrentWeek] occurrencesPerDay:6]
+                                                                                   schedule:[OCKCareSchedule dailyScheduleWithStartDate:[CommTool firstDateOfCurrentWeek] occurrencesPerDay:6]
                                                                            resultResettable:YES
                                                                                    userInfo:nil];
     //目标训练
@@ -145,7 +138,7 @@
                                                                                         tintColor:[UIColor  orangeColor]
                                                                                      instructions:@"Gather some objects that frustrated you before the apocalypse, like printers and construction barriers. Keep your eyes sharp and your arm steady, and blow as many holes as you can in them for at least five minutes."
                                                                                          imageURL:nil
-                                                                                         schedule:[OCKCareSchedule dailyScheduleWithStartDate:[self firstDateOfCurrentWeek] occurrencesPerDay:2]
+                                                                                         schedule:[OCKCareSchedule dailyScheduleWithStartDate:[CommTool firstDateOfCurrentWeek] occurrencesPerDay:2]
                                                                                  resultResettable:YES
                                                                                          userInfo:nil];
     //估值活动
@@ -153,7 +146,7 @@
                                                                        groupIdentifier:nil
                                                                                  title:@"Pulse"
                                                                                   text:@"Do you have one?"
-                                                                             tintColor:[UIColor greenColor] resultResettable:YES schedule:[OCKCareSchedule dailyScheduleWithStartDate:[self firstDateOfCurrentWeek] occurrencesPerDay:1] userInfo:@{@"ORKTask":[self makePulseAssessmentTask]} optional:NO];
+                                                                             tintColor:[UIColor greenColor] resultResettable:YES schedule:[OCKCareSchedule dailyScheduleWithStartDate:[CommTool firstDateOfCurrentWeek] occurrencesPerDay:1] userInfo:@{@"ORKTask":[self makePulseAssessmentTask]} optional:NO];
     
 
     
@@ -163,7 +156,7 @@
                                                                                         text:@"mmHg"
                                                                                    tintColor:[UIColor orangeColor]
                                                                             resultResettable:YES
-                                                                                    schedule:[OCKCareSchedule dailyScheduleWithStartDate:[self firstDateOfCurrentWeek] occurrencesPerDay:1]
+                                                                                    schedule:[OCKCareSchedule dailyScheduleWithStartDate:[CommTool firstDateOfCurrentWeek] occurrencesPerDay:1]
                                                                                     userInfo:@{
                                                                                                @"ORKTask":[self makeBloodPressure2AssessmentTask],
                                                                                                @"type":@"bp"
@@ -194,7 +187,7 @@
                                                                                         text:@"Oral"
                                                                                    tintColor:[UIColor orangeColor]
                                                                             resultResettable:YES
-                                                                                    schedule:[OCKCareSchedule dailyScheduleWithStartDate:[self firstDateOfCurrentWeek] occurrencesPerDay:1]
+                                                                                    schedule:[OCKCareSchedule dailyScheduleWithStartDate:[CommTool firstDateOfCurrentWeek] occurrencesPerDay:1]
                                                                                     userInfo:@{
                                                                                                @"ORKTask":[self makeTemperatureAssessmentTask],
                                                                                                @"type":@"th"

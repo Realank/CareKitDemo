@@ -9,10 +9,11 @@
 #import "HomeViewController.h"
 #import "CareDataModel.h"
 #import "CarePlanStroreManager.h"
-@interface HomeViewController ()<OCKCareContentsViewControllerDelegate,ORKTaskViewControllerDelegate>
+#import "InsightsBuilder.h"
+@interface HomeViewController ()<OCKCareContentsViewControllerDelegate,ORKTaskViewControllerDelegate,InsightBuilderUpdateInsightsDelegate>
 
 @property (nonatomic, weak) OCKCareContentsViewController* careContentsViewController;
-
+@property (nonatomic, weak) OCKInsightsViewController* insightsViewController;
 @end
 
 @implementation HomeViewController
@@ -21,8 +22,16 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.viewControllers = @[
-                             [[UINavigationController alloc] initWithRootViewController:[self careContentsViewController]]
+                             [[UINavigationController alloc] initWithRootViewController:[self careContentsViewController]],
+                             [[UINavigationController alloc] initWithRootViewController:[self insightsViewController]]
                              ];
+    [InsightsBuilder sharedInstance].delegate = self;
+    
+}
+
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    [[InsightsBuilder sharedInstance] updateInsights];
 }
 
 #pragma mark - getters
@@ -44,12 +53,27 @@
     return _careContentsViewController;
 }
 
+- (OCKInsightsViewController *)insightsViewController{
+    if (!_insightsViewController) {
+        OCKPatientWidget* widget1 = [OCKPatientWidget defaultWidgetWithActivityIdentifier:@"Blood Pressure" tintColor:[UIColor redColor]];
+        OCKPatientWidget* widget2 = [OCKPatientWidget defaultWidgetWithActivityIdentifier:@"Blood Glucose" tintColor:[UIColor redColor]];
+        OCKPatientWidget* widget3 = [OCKPatientWidget defaultWidgetWithActivityIdentifier:@"Temperature" tintColor:[UIColor redColor]];
+        OCKInsightsViewController* vc = [[OCKInsightsViewController alloc] initWithInsightItems:[InsightsBuilder sharedInstance].insights patientWidgets:@[widget1,widget2,widget3] thresholds:nil store:[self carePlanStore]];
+        vc.title = @"Insights";
+        vc.tabBarItem = [[UITabBarItem alloc] initWithTitle:vc.title
+                                                      image:[UIImage imageNamed:@"insights"] selectedImage:[UIImage imageNamed:@"insights-filled"]];
+        _insightsViewController = vc;
+        return vc;
+    }
+    return _insightsViewController;
+}
+
 - (NSString*)stringWithNumArray:(NSArray<NSNumber*>*)array{
     if (array.count == 0) {
         return @"";
     }
     NSMutableString* string = [NSMutableString stringWithFormat:@"%@",array.firstObject];
-    for (int i = 1; i < array.count; i++) {
+    for (int i = 1; i < array.count && i < 2; i++) {
         [string appendFormat:@"/%@",array[i]];
     }
     return [string copy];
@@ -76,8 +100,17 @@
                 unit = ((ORKNumericQuestionResult*)firstStepResult).unit;
             }
             if (numbericResultsM.count) {
-                
-                OCKCarePlanEventResult* eventResult = [[OCKCarePlanEventResult alloc] initWithValueString:[self stringWithNumArray:numbericResultsM] unitString:unit userInfo:nil];
+                NSString* valueString = [self stringWithNumArray:numbericResultsM];
+                OCKCarePlanEventResult* eventResult = [[OCKCarePlanEventResult alloc] initWithValueString:valueString
+                                                                                unitString:unit
+                                                                                userInfo:@{
+                                                                                     @"date":event.date,
+                                                                                     @"values":[numbericResultsM copy],
+                                                                                     @"type":event.activity.userInfo[@"type"],
+                                                                                     @"unit":unit,
+                                                                                     @"valueString":valueString,
+                                                                                           }
+                                                                                values:nil];
                 [[self carePlanStore] updateEvent:event withResult:eventResult state:OCKCarePlanEventStateCompleted completion:^(BOOL success, OCKCarePlanEvent * _Nullable event, NSError * _Nullable error) {
                     if(!success){
                         NSLog(@"Error:%@",error.localizedDescription);
@@ -103,6 +136,11 @@
             
         }
     }
+}
+
+- (void)insightBuilderDidUpdatedInsights{
+    self.insightsViewController.items = [InsightsBuilder sharedInstance].insights;
+    NSLog(@"insights updated");
 }
 
 

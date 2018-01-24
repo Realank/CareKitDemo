@@ -58,8 +58,8 @@
                            userInfo:(nullable NSDictionary<NSString *,id<NSCoding>> *)userInfo
                              values:(nullable NSArray<NSNumber *> *)values {
     OCKThrowInvalidArgumentExceptionIfNil(valueString);
-    if ((values) && (values.count > 2)) {
-        @throw [NSException exceptionWithName:NSInvalidArgumentException reason:@"Values cannot have more than 2 elements." userInfo:nil];
+    if ((values) && (values.count > 5)) {
+        @throw [NSException exceptionWithName:NSInvalidArgumentException reason:@"Values cannot have more than 5 elements." userInfo:nil];
     }
     
     self = [super init];

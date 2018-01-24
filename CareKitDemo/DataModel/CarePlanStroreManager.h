@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "CareDataModel.h"
 
 @interface CarePlanStroreManager : NSObject
 
