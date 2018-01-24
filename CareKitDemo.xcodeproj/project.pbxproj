@@ -21,7 +21,7 @@
 		8C83D59D2016D7F100C20A68 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C83D59C2016D7F100C20A68 /* HomeViewController.m */; };
 		8CD07A5F20171DAF004F3A7A /* CareDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD07A5B20171DAF004F3A7A /* CareDataModel.m */; };
 		8CD07A6020171DAF004F3A7A /* InsightsBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD07A5C20171DAF004F3A7A /* InsightsBuilder.m */; };
-		8CD07A6120171DAF004F3A7A /* CarePlanStroreManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD07A5D20171DAF004F3A7A /* CarePlanStroreManager.m */; };
+		8CD07A6120171DAF004F3A7A /* CarePlanStoreManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD07A5D20171DAF004F3A7A /* CarePlanStoreManager.m */; };
 		8CD07A6D201831FB004F3A7A /* CommTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD07A6C201831FB004F3A7A /* CommTool.m */; };
 /* End PBXBuildFile section */
 
@@ -120,10 +120,10 @@
 		8C83D59B2016D7F100C20A68 /* HomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		8C83D59C2016D7F100C20A68 /* HomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		8CD07A5920171DAF004F3A7A /* InsightsBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InsightsBuilder.h; sourceTree = "<group>"; };
-		8CD07A5A20171DAF004F3A7A /* CarePlanStroreManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarePlanStroreManager.h; sourceTree = "<group>"; };
+		8CD07A5A20171DAF004F3A7A /* CarePlanStoreManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarePlanStoreManager.h; sourceTree = "<group>"; };
 		8CD07A5B20171DAF004F3A7A /* CareDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CareDataModel.m; sourceTree = "<group>"; };
 		8CD07A5C20171DAF004F3A7A /* InsightsBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InsightsBuilder.m; sourceTree = "<group>"; };
-		8CD07A5D20171DAF004F3A7A /* CarePlanStroreManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarePlanStroreManager.m; sourceTree = "<group>"; };
+		8CD07A5D20171DAF004F3A7A /* CarePlanStoreManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarePlanStoreManager.m; sourceTree = "<group>"; };
 		8CD07A5E20171DAF004F3A7A /* CareDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CareDataModel.h; sourceTree = "<group>"; };
 		8CD07A6820172F7E004F3A7A /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		8CD07A6B201831FB004F3A7A /* CommTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommTool.h; sourceTree = "<group>"; };
@@ -258,8 +258,8 @@
 				8CD07A5B20171DAF004F3A7A /* CareDataModel.m */,
 				8CD07A5920171DAF004F3A7A /* InsightsBuilder.h */,
 				8CD07A5C20171DAF004F3A7A /* InsightsBuilder.m */,
-				8CD07A5A20171DAF004F3A7A /* CarePlanStroreManager.h */,
-				8CD07A5D20171DAF004F3A7A /* CarePlanStroreManager.m */,
+				8CD07A5A20171DAF004F3A7A /* CarePlanStoreManager.h */,
+				8CD07A5D20171DAF004F3A7A /* CarePlanStoreManager.m */,
 			);
 			path = DataModel;
 			sourceTree = "<group>";
@@ -460,7 +460,7 @@
 			files = (
 				8CD07A5F20171DAF004F3A7A /* CareDataModel.m in Sources */,
 				8C203F771E2DB98F00A0C5F1 /* AppDelegate.m in Sources */,
-				8CD07A6120171DAF004F3A7A /* CarePlanStroreManager.m in Sources */,
+				8CD07A6120171DAF004F3A7A /* CarePlanStoreManager.m in Sources */,
 				8CD07A6020171DAF004F3A7A /* InsightsBuilder.m in Sources */,
 				8C203F741E2DB98F00A0C5F1 /* main.m in Sources */,
 				8CD07A6D201831FB004F3A7A /* CommTool.m in Sources */,

@@ -197,4 +197,6 @@
     
     _activities = @[bloodPressureActivity, bloodGlucoseActivity, temperatureActivity];//@[cardioActivity, limberUpActivity, targetPracticeActivity,pulseActivity,temperatureActivity,bloodPressureActivity,bloodGlucoseActivity];
 }
+
+
 @end

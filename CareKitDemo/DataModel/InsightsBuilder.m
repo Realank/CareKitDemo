@@ -61,7 +61,7 @@
 }
 
 - (OCKCarePlanStore*)carePlanStore{
-    return [CarePlanStroreManager sharedInstance].carePlanStore;
+    return [CarePlanStoreManager sharedInstance].carePlanStore;
 }
 
 
@@ -88,7 +88,7 @@
     
     NSDateComponents* queryRangeStart = [CommTool firstDateOfCurrentWeek];
     NSDateComponents* queryRangeEnd = [CommTool currentDate];
-    [[CarePlanStroreManager sharedInstance].carePlanStore enumerateEventsOfActivity:activity
+    [[CarePlanStoreManager sharedInstance].carePlanStore enumerateEventsOfActivity:activity
                                                                           startDate:queryRangeStart
                                                                             endDate:queryRangeEnd
                                                                             handler:^(OCKCarePlanEvent * _Nullable event, BOOL * _Nonnull stop) {

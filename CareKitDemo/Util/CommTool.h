@@ -12,4 +12,6 @@
 
 + (NSDateComponents*)firstDateOfCurrentWeek;
 + (NSDateComponents*)currentDate;
++ (OCKDocument*)generateSampleDocument;
+
 @end

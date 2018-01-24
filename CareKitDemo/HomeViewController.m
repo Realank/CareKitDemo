@@ -8,12 +8,13 @@
 
 #import "HomeViewController.h"
 #import "CareDataModel.h"
-#import "CarePlanStroreManager.h"
+#import "CarePlanStoreManager.h"
 #import "InsightsBuilder.h"
-@interface HomeViewController ()<OCKCareContentsViewControllerDelegate,ORKTaskViewControllerDelegate,InsightBuilderUpdateInsightsDelegate>
+@interface HomeViewController ()<OCKCareContentsViewControllerDelegate,ORKTaskViewControllerDelegate,InsightBuilderUpdateInsightsDelegate,OCKConnectViewControllerDelegate,OCKConnectViewControllerDataSource>
 
 @property (nonatomic, weak) OCKCareContentsViewController* careContentsViewController;
 @property (nonatomic, weak) OCKInsightsViewController* insightsViewController;
+@property (nonatomic, weak) OCKConnectViewController* connectViewController;
 @end
 
 @implementation HomeViewController
@@ -22,8 +23,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.viewControllers = @[
-                             [[UINavigationController alloc] initWithRootViewController:[self careContentsViewController]],
-                             [[UINavigationController alloc] initWithRootViewController:[self insightsViewController]]
+                             [[UINavigationController alloc] initWithRootViewController:self.careContentsViewController],
+                             [[UINavigationController alloc] initWithRootViewController:self.insightsViewController],
+                             [[UINavigationController alloc] initWithRootViewController:self.connectViewController]
                              ];
     [InsightsBuilder sharedInstance].delegate = self;
     
@@ -36,7 +38,7 @@
 
 #pragma mark - getters
 - (OCKCarePlanStore*)carePlanStore{
-    return [CarePlanStroreManager sharedInstance].carePlanStore;
+    return [CarePlanStoreManager sharedInstance].carePlanStore;
 }
 
 - (OCKCareContentsViewController *)careContentsViewController{
@@ -66,6 +68,21 @@
         return vc;
     }
     return _insightsViewController;
+}
+
+- (OCKConnectViewController*)connectViewController{
+    if (!_connectViewController) {
+        OCKConnectViewController* vc = [[OCKConnectViewController alloc] initWithContacts:[CarePlanStoreManager sharedInstance].contacts patient:[CarePlanStoreManager sharedInstance].patient];
+        vc.delegate = self;
+//        vc.dataSource = self;
+        vc.title = @"Connect";
+        vc.tabBarItem = [[UITabBarItem alloc] initWithTitle:vc.title
+                                                      image:[UIImage imageNamed:@"connect"] selectedImage:[UIImage imageNamed:@"connect-filled"]];
+        _connectViewController = vc;
+        return vc;
+    }
+    return _connectViewController;
+    
 }
 
 - (NSString*)stringWithNumArray:(NSArray<NSNumber*>*)array{
@@ -141,6 +158,16 @@
 - (void)insightBuilderDidUpdatedInsights{
     self.insightsViewController.items = [InsightsBuilder sharedInstance].insights;
     NSLog(@"insights updated");
+}
+
+- (void)connectViewController:(OCKConnectViewController *)connectViewController didSelectShareButtonForContact:(OCKContact *)contact presentationSourceView:(nullable UIView *)sourceView{
+    OCKDocument* doc = [CommTool generateSampleDocument];
+    [doc createPDFDataWithCompletion:^(NSData * _Nonnull PDFdata, NSError * _Nullable error) {
+        UIActivityViewController* vc = [[UIActivityViewController alloc] initWithActivityItems:@[PDFdata] applicationActivities:nil];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self presentViewController:vc animated:YES completion:nil];
+        });
+    }];
 }
 
 

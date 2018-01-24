@@ -20,11 +20,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CareKitDemo/HomeViewController.m"
-            timestampString = "538473563.761145"
+            timestampString = "538477973.1843359"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "142"
-            endingLineNumber = "142"
+            startingLineNumber = "159"
+            endingLineNumber = "159"
             landmarkName = "-insightBuilderDidUpdatedInsights"
             landmarkType = "7">
          </BreakpointContent>

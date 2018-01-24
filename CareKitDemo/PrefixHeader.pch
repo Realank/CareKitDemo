@@ -15,7 +15,7 @@
 #import <ResearchKit/ResearchKit.h>
 #import "InsightsBuilder.h"
 #import "CareDataModel.h"
-#import "CarePlanStroreManager.h"
+#import "CarePlanStoreManager.h"
 #import "CommTool.h"
 
 #define kActivityIdentifierBP @"Blood Pressure"

@@ -8,10 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
-@interface CarePlanStroreManager : NSObject
+@interface CarePlanStoreManager : NSObject
 
 @property (nonatomic, strong) OCKCarePlanStore* carePlanStore;
-
+@property (nonatomic, strong) OCKPatient* patient;
+@property (nonatomic, strong) NSArray<OCKContact*>* contacts;
 +(instancetype) sharedInstance;
 
 @end

@@ -26,4 +26,12 @@
     return currentDate;
 }
 
++ (OCKDocument*)generateSampleDocument{
+    OCKDocumentElementSubtitle* subtitle = [[OCKDocumentElementSubtitle alloc] initWithSubtitle:@"sample"];
+    OCKDocumentElementParagraph* paragraph = [[OCKDocumentElementParagraph alloc] initWithContent:@"Hello world"];
+    OCKDocument* doc = [[OCKDocument alloc] initWithTitle:@"Document" elements:@[subtitle,paragraph]];
+    doc.pageHeader = @"Developed By Realank";
+    return doc;
+}
+
 @end
