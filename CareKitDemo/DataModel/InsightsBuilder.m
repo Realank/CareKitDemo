@@ -205,7 +205,7 @@
     OCKBarSeries* bpSysBarSeries = [[OCKBarSeries alloc] initWithTitle:@"SYS" values:bpSysValues valueLabels:bpSysValueLables tintColor:[UIColor redColor]];
     OCKBarSeries* bpDiaBarSeries = [[OCKBarSeries alloc] initWithTitle:@"DIA" values:bpDiaValues valueLabels:bpDiaValueLables tintColor:[UIColor redColor]];
     
-    OCKBarSeries* bgBarSeries = [[OCKBarSeries alloc] initWithTitle:@"Blucose" values:bgValues valueLabels:bgValueLables tintColor:[UIColor blueColor]];
+    OCKBarSeries* bgBarSeries = [[OCKBarSeries alloc] initWithTitle:@"Glucose" values:bgValues valueLabels:bgValueLables tintColor:[UIColor blueColor]];
     
     OCKBarSeries* thBarSeries = [[OCKBarSeries alloc] initWithTitle:@"Temperature" values:temperatureValues valueLabels:temperatureValueLables tintColor:[UIColor orangeColor]];
     
