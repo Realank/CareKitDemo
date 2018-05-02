@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8C03CD012019A54400908BFE /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C03CD002019A54400908BFE /* libc++.tbd */; };
 		8C203F741E2DB98F00A0C5F1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C203F731E2DB98F00A0C5F1 /* main.m */; };
 		8C203F771E2DB98F00A0C5F1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C203F761E2DB98F00A0C5F1 /* AppDelegate.m */; };
 		8C203F7D1E2DB98F00A0C5F1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C203F7B1E2DB98F00A0C5F1 /* Main.storyboard */; };
@@ -14,10 +15,16 @@
 		8C203F821E2DB98F00A0C5F1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C203F801E2DB98F00A0C5F1 /* LaunchScreen.storyboard */; };
 		8C203F8D1E2DB98F00A0C5F1 /* CareKitDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C203F8C1E2DB98F00A0C5F1 /* CareKitDemoTests.m */; };
 		8C203F981E2DB98F00A0C5F1 /* CareKitDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C203F971E2DB98F00A0C5F1 /* CareKitDemoUITests.m */; };
-		8C77856A1E2DC40100A16D0A /* CareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C77855C1E2DC38D00A16D0A /* CareKit.framework */; };
-		8C77856B1E2DC40100A16D0A /* CareKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8C77855C1E2DC38D00A16D0A /* CareKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		8C83D58F2016C7BE00C20A68 /* ResearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C83D58C2016C75600C20A68 /* ResearchKit.framework */; };
-		8C83D5902016C7BE00C20A68 /* ResearchKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8C83D58C2016C75600C20A68 /* ResearchKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8C376F2D202C3C3C00BB2E77 /* ResearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C83D58C2016C75600C20A68 /* ResearchKit.framework */; };
+		8C376F2E202C3C3C00BB2E77 /* ResearchKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8C83D58C2016C75600C20A68 /* ResearchKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8C376F31202C3C3C00BB2E77 /* CareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C77855C1E2DC38D00A16D0A /* CareKit.framework */; };
+		8C376F32202C3C3C00BB2E77 /* CareKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8C77855C1E2DC38D00A16D0A /* CareKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8C376F3B202C42A800BB2E77 /* iHealthLibrarySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C03CCF52019A33E00908BFE /* iHealthLibrarySDK.framework */; };
+		8C376F3D202C44F200BB2E77 /* iHealthLibraryBundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8C03CCFA2019A33E00908BFE /* iHealthLibraryBundle.bundle */; };
+		8C7BB24C20215C0100C0464F /* GraphTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C7BB24A20215C0100C0464F /* GraphTableViewController.m */; };
+		8C7BB24D20215C0100C0464F /* GraphTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C7BB24B20215C0100C0464F /* GraphTableViewController.xib */; };
+		8C7BB2502021ACB200C0464F /* ChartDataSources.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C7BB24F2021ACB200C0464F /* ChartDataSources.m */; };
+		8C7BB2532021B06100C0464F /* ChartTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C7BB2522021B06100C0464F /* ChartTableViewCell.m */; };
 		8C83D59D2016D7F100C20A68 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C83D59C2016D7F100C20A68 /* HomeViewController.m */; };
 		8CD07A5F20171DAF004F3A7A /* CareDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD07A5B20171DAF004F3A7A /* CareDataModel.m */; };
 		8CD07A6020171DAF004F3A7A /* InsightsBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD07A5C20171DAF004F3A7A /* InsightsBuilder.m */; };
@@ -40,6 +47,20 @@
 			remoteGlobalIDString = 8C203F6E1E2DB98F00A0C5F1;
 			remoteInfo = CareKitDemo;
 		};
+		8C376F2F202C3C3C00BB2E77 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8C83D5852016C75600C20A68 /* ResearchKit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = B183A4731A8535D100C76870;
+			remoteInfo = ResearchKit;
+		};
+		8C376F33202C3C3C00BB2E77 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8C7785551E2DC38D00A16D0A /* CareKit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 8605A5B91C4F04EC00DD65FF;
+			remoteInfo = CareKit;
+		};
 		8C77855B1E2DC38D00A16D0A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 8C7785551E2DC38D00A16D0A /* CareKit.xcodeproj */;
@@ -53,13 +74,6 @@
 			proxyType = 2;
 			remoteGlobalIDString = 8605A5C41C4F04EC00DD65FF;
 			remoteInfo = CareKitTests;
-		};
-		8C77856C1E2DC40100A16D0A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8C7785551E2DC38D00A16D0A /* CareKit.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 8605A5B91C4F04EC00DD65FF;
-			remoteInfo = CareKit;
 		};
 		8C83D58B2016C75600C20A68 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -75,13 +89,6 @@
 			remoteGlobalIDString = 86CC8E9A1AC09332001CCD89;
 			remoteInfo = ResearchKitTests;
 		};
-		8C83D5912016C7BE00C20A68 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8C83D5852016C75600C20A68 /* ResearchKit.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = B183A4731A8535D100C76870;
-			remoteInfo = ResearchKit;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -91,8 +98,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				8C83D5902016C7BE00C20A68 /* ResearchKit.framework in Embed Frameworks */,
-				8C77856B1E2DC40100A16D0A /* CareKit.framework in Embed Frameworks */,
+				8C376F32202C3C3C00BB2E77 /* CareKit.framework in Embed Frameworks */,
+				8C376F2E202C3C3C00BB2E77 /* ResearchKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -100,6 +107,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8C03CCF52019A33E00908BFE /* iHealthLibrarySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = iHealthLibrarySDK.framework; sourceTree = "<group>"; };
+		8C03CCFA2019A33E00908BFE /* iHealthLibraryBundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = iHealthLibraryBundle.bundle; sourceTree = "<group>"; };
+		8C03CD002019A54400908BFE /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		8C203F6F1E2DB98F00A0C5F1 /* CareKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CareKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C203F731E2DB98F00A0C5F1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8C203F751E2DB98F00A0C5F1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -116,6 +126,13 @@
 		8C203F991E2DB98F00A0C5F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8C203FBB1E2DBB3100A0C5F1 /* CareKitDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CareKitDemo.entitlements; sourceTree = "<group>"; };
 		8C7785551E2DC38D00A16D0A /* CareKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CareKit.xcodeproj; path = "Libraries/CareKit-master/CareKit.xcodeproj"; sourceTree = "<group>"; };
+		8C7BB24920215C0100C0464F /* GraphTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GraphTableViewController.h; sourceTree = "<group>"; };
+		8C7BB24A20215C0100C0464F /* GraphTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GraphTableViewController.m; sourceTree = "<group>"; };
+		8C7BB24B20215C0100C0464F /* GraphTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GraphTableViewController.xib; sourceTree = "<group>"; };
+		8C7BB24E2021ACB200C0464F /* ChartDataSources.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChartDataSources.h; sourceTree = "<group>"; };
+		8C7BB24F2021ACB200C0464F /* ChartDataSources.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChartDataSources.m; sourceTree = "<group>"; };
+		8C7BB2512021B06100C0464F /* ChartTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChartTableViewCell.h; sourceTree = "<group>"; };
+		8C7BB2522021B06100C0464F /* ChartTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChartTableViewCell.m; sourceTree = "<group>"; };
 		8C83D5852016C75600C20A68 /* ResearchKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ResearchKit.xcodeproj; path = "Libraries/ResearchKit-master/ResearchKit.xcodeproj"; sourceTree = "<group>"; };
 		8C83D59B2016D7F100C20A68 /* HomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		8C83D59C2016D7F100C20A68 /* HomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
@@ -135,8 +152,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8C77856A1E2DC40100A16D0A /* CareKit.framework in Frameworks */,
-				8C83D58F2016C7BE00C20A68 /* ResearchKit.framework in Frameworks */,
+				8C376F31202C3C3C00BB2E77 /* CareKit.framework in Frameworks */,
+				8C376F3B202C42A800BB2E77 /* iHealthLibrarySDK.framework in Frameworks */,
+				8C03CD012019A54400908BFE /* libc++.tbd in Frameworks */,
+				8C376F2D202C3C3C00BB2E77 /* ResearchKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -188,6 +207,7 @@
 				8C203F761E2DB98F00A0C5F1 /* AppDelegate.m */,
 				8C83D59B2016D7F100C20A68 /* HomeViewController.h */,
 				8C83D59C2016D7F100C20A68 /* HomeViewController.m */,
+				8C7BB24820215BD700C0464F /* GraphViewController */,
 				8C203F7B1E2DB98F00A0C5F1 /* Main.storyboard */,
 				8C203F7E1E2DB98F00A0C5F1 /* Assets.xcassets */,
 				8C203F801E2DB98F00A0C5F1 /* LaunchScreen.storyboard */,
@@ -201,6 +221,9 @@
 		8C203F721E2DB98F00A0C5F1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				8C7BB23C2021547E00C0464F /* Images */,
+				8C03CCFA2019A33E00908BFE /* iHealthLibraryBundle.bundle */,
+				8C03CCF52019A33E00908BFE /* iHealthLibrarySDK.framework */,
 				8C83D5852016C75600C20A68 /* ResearchKit.xcodeproj */,
 				8C7785551E2DC38D00A16D0A /* CareKit.xcodeproj */,
 				8C203F731E2DB98F00A0C5F1 /* main.m */,
@@ -229,6 +252,7 @@
 		8C203FBC1E2DBB3200A0C5F1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8C03CD002019A54400908BFE /* libc++.tbd */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -240,6 +264,27 @@
 				8C77855E1E2DC38D00A16D0A /* CareKitTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		8C7BB23C2021547E00C0464F /* Images */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
+		8C7BB24820215BD700C0464F /* GraphViewController */ = {
+			isa = PBXGroup;
+			children = (
+				8C7BB24920215C0100C0464F /* GraphTableViewController.h */,
+				8C7BB24A20215C0100C0464F /* GraphTableViewController.m */,
+				8C7BB24B20215C0100C0464F /* GraphTableViewController.xib */,
+				8C7BB2512021B06100C0464F /* ChartTableViewCell.h */,
+				8C7BB2522021B06100C0464F /* ChartTableViewCell.m */,
+				8C7BB24E2021ACB200C0464F /* ChartDataSources.h */,
+				8C7BB24F2021ACB200C0464F /* ChartDataSources.m */,
+			);
+			path = GraphViewController;
 			sourceTree = "<group>";
 		};
 		8C83D5862016C75600C20A68 /* Products */ = {
@@ -288,8 +333,8 @@
 			buildRules = (
 			);
 			dependencies = (
-				8C77856D1E2DC40100A16D0A /* PBXTargetDependency */,
-				8C83D5922016C7BE00C20A68 /* PBXTargetDependency */,
+				8C376F30202C3C3C00BB2E77 /* PBXTargetDependency */,
+				8C376F34202C3C3C00BB2E77 /* PBXTargetDependency */,
 			);
 			name = CareKitDemo;
 			productName = CareKitDemo;
@@ -343,9 +388,12 @@
 				TargetAttributes = {
 					8C203F6E1E2DB98F00A0C5F1 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 275X96KVEB;
+						DevelopmentTeam = 3Q553VZ29W;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
 							com.apple.HealthKit = {
 								enabled = 0;
 							};
@@ -431,7 +479,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C376F3D202C44F200BB2E77 /* iHealthLibraryBundle.bundle in Resources */,
 				8C203F821E2DB98F00A0C5F1 /* LaunchScreen.storyboard in Resources */,
+				8C7BB24D20215C0100C0464F /* GraphTableViewController.xib in Resources */,
 				8C203F7F1E2DB98F00A0C5F1 /* Assets.xcassets in Resources */,
 				8C203F7D1E2DB98F00A0C5F1 /* Main.storyboard in Resources */,
 			);
@@ -460,10 +510,13 @@
 			files = (
 				8CD07A5F20171DAF004F3A7A /* CareDataModel.m in Sources */,
 				8C203F771E2DB98F00A0C5F1 /* AppDelegate.m in Sources */,
+				8C7BB2502021ACB200C0464F /* ChartDataSources.m in Sources */,
 				8CD07A6120171DAF004F3A7A /* CarePlanStoreManager.m in Sources */,
 				8CD07A6020171DAF004F3A7A /* InsightsBuilder.m in Sources */,
 				8C203F741E2DB98F00A0C5F1 /* main.m in Sources */,
+				8C7BB2532021B06100C0464F /* ChartTableViewCell.m in Sources */,
 				8CD07A6D201831FB004F3A7A /* CommTool.m in Sources */,
+				8C7BB24C20215C0100C0464F /* GraphTableViewController.m in Sources */,
 				8C83D59D2016D7F100C20A68 /* HomeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -497,15 +550,15 @@
 			target = 8C203F6E1E2DB98F00A0C5F1 /* CareKitDemo */;
 			targetProxy = 8C203F941E2DB98F00A0C5F1 /* PBXContainerItemProxy */;
 		};
-		8C77856D1E2DC40100A16D0A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = CareKit;
-			targetProxy = 8C77856C1E2DC40100A16D0A /* PBXContainerItemProxy */;
-		};
-		8C83D5922016C7BE00C20A68 /* PBXTargetDependency */ = {
+		8C376F30202C3C3C00BB2E77 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = ResearchKit;
-			targetProxy = 8C83D5912016C7BE00C20A68 /* PBXContainerItemProxy */;
+			targetProxy = 8C376F2F202C3C3C00BB2E77 /* PBXContainerItemProxy */;
+		};
+		8C376F34202C3C3C00BB2E77 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = CareKit;
+			targetProxy = 8C376F33202C3C3C00BB2E77 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -636,12 +689,19 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 275X96KVEB;
+				DEVELOPMENT_TEAM = 3Q553VZ29W;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/CareKitDemo",
+				);
 				GCC_PREFIX_HEADER = "$(SRCROOT)/CareKitDemo/PrefixHeader.pch";
 				INFOPLIST_FILE = CareKitDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.realank.CareKitDemo;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ihealth.nurseapp.carekit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -650,12 +710,19 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 275X96KVEB;
+				DEVELOPMENT_TEAM = 3Q553VZ29W;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/CareKitDemo",
+				);
 				GCC_PREFIX_HEADER = "$(SRCROOT)/CareKitDemo/PrefixHeader.pch";
 				INFOPLIST_FILE = CareKitDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.realank.CareKitDemo;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ihealth.nurseapp.carekit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

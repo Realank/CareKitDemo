@@ -1000,6 +1000,7 @@
 					8605A5B91C4F04EC00DD65FF = {
 						CreatedOnToolsVersion = 7.2;
 						LastSwiftMigration = 0810;
+						ProvisioningStyle = Automatic;
 					};
 					8605A5C31C4F04EC00DD65FF = {
 						CreatedOnToolsVersion = 7.2;
@@ -1358,8 +1359,10 @@
 		8605A5CF1C4F04EC00DD65FF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -1370,6 +1373,7 @@
 				MODULEMAP_FILE = "$(SRCROOT)/CareKit/CareKit.modulemap";
 				PRODUCT_BUNDLE_IDENTIFIER = org.carekit.CareKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -1379,8 +1383,10 @@
 		8605A5D01C4F04EC00DD65FF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -1391,6 +1397,7 @@
 				MODULEMAP_FILE = "$(SRCROOT)/CareKit/CareKit.modulemap";
 				PRODUCT_BUNDLE_IDENTIFIER = org.carekit.CareKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
 			};

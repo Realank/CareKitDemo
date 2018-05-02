@@ -19,6 +19,13 @@
     return dateComponents;
 }
 
++ (NSDateComponents*)dateBeforeDays:(NSInteger)days{
+    NSCalendar* calendar = [NSCalendar currentCalendar];
+    NSDate *before = [NSDate dateWithTimeIntervalSinceNow:(-3600 * 24 * days)];
+    NSDateComponents* dateComponents = [calendar components:NSCalendarUnitEra|NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay fromDate:before];
+    return dateComponents;
+}
+
 + (NSDateComponents*)currentDate{
     NSCalendar* calendar = [NSCalendar currentCalendar];
     NSDate* now = [NSDate date];
@@ -32,6 +39,13 @@
     OCKDocument* doc = [[OCKDocument alloc] initWithTitle:@"Document" elements:@[subtitle,paragraph]];
     doc.pageHeader = @"Developed By Realank";
     return doc;
+}
+
+//获取Documents目录
++(NSString *)documentDirectory{
+    //[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
+    NSString *documentsDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
+    return documentsDirectory;
 }
 
 @end

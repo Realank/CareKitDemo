@@ -103,20 +103,28 @@
     return [[ORKOrderedTask alloc] initWithIdentifier:@"BloodPressureTask" steps:@[queationStep]];
 }
 
+- (OCKCareSchedule*)dailyScheduleWithStartYear:(NSInteger)year month:(NSInteger)month day:(NSInteger)day occurrencesPerDay:(NSInteger)occurrences{
+    NSDateComponents* startDate = [[NSDateComponents alloc] initWithYear:year month:month day:day];
+    OCKCareSchedule* schedule = [OCKCareSchedule dailyScheduleWithStartDate:startDate occurrencesPerDay:occurrences];
+    return schedule;
+}
+
 - (void)configActivities{
     //添加干预活动
     //有氧活动
     OCKCarePlanActivity* cardioActivity = [[OCKCarePlanActivity alloc] initWithIdentifier:@"Cardio"
-                                                                          groupIdentifier:nil
+                                                                          groupIdentifier:@"Practice"
                                                                                      type:OCKCarePlanActivityTypeIntervention
                                                                                     title:@"Cardio"
                                                                                      text:@"60 Min"
-                                                                                tintColor:[UIColor  orangeColor]
+                                                                                tintColor:UIColorFromRGB(0xf596ed)
                                                                              instructions:@"Jog at a moderate pace for an hour. If there isn't an actual one, imagine a horde of zombies behind you."
                                                                                  imageURL:nil
-                                                                                 schedule:[OCKCareSchedule dailyScheduleWithStartDate:[CommTool firstDateOfCurrentWeek] occurrencesPerDay:2]
+                                                                                 schedule:[self dailyScheduleWithStartYear:2018 month:1 day:1 occurrencesPerDay:2]
                                                                          resultResettable:YES
-                                                                                 userInfo:nil];
+                                                                                 userInfo:@{
+                                                                                            @"type":@"cardio"
+                                                                                            }];
     //舒展活动
     OCKCarePlanActivity* limberUpActivity = [[OCKCarePlanActivity alloc] initWithIdentifier:@"Limber Up"
                                                                             groupIdentifier:nil
@@ -131,16 +139,18 @@
                                                                                    userInfo:nil];
     //目标训练
     OCKCarePlanActivity* targetPracticeActivity = [[OCKCarePlanActivity alloc] initWithIdentifier:@"Target Practice"
-                                                                                  groupIdentifier:nil
+                                                                                  groupIdentifier:@"Practice"
                                                                                              type:OCKCarePlanActivityTypeIntervention
                                                                                             title:@"Target Practice"
                                                                                              text:nil
-                                                                                        tintColor:[UIColor  orangeColor]
+                                                                                        tintColor:UIColorFromRGB(0x9d6dff)
                                                                                      instructions:@"Gather some objects that frustrated you before the apocalypse, like printers and construction barriers. Keep your eyes sharp and your arm steady, and blow as many holes as you can in them for at least five minutes."
                                                                                          imageURL:nil
-                                                                                         schedule:[OCKCareSchedule dailyScheduleWithStartDate:[CommTool firstDateOfCurrentWeek] occurrencesPerDay:2]
+                                                                                         schedule:[self dailyScheduleWithStartYear:2018 month:1 day:1 occurrencesPerDay:1]
                                                                                  resultResettable:YES
-                                                                                         userInfo:nil];
+                                                                                         userInfo:@{
+                                                                                                    @"type":@"target"
+                                                                                                    }];
     //估值活动
     OCKCarePlanActivity* pulseActivity = [OCKCarePlanActivity assessmentWithIdentifier:@"Pulse"
                                                                        groupIdentifier:nil
@@ -154,17 +164,17 @@
                                                                              groupIdentifier:@"Vitals"
                                                                                        title:@"Blood Pressure"
                                                                                         text:@"mmHg"
-                                                                                   tintColor:[UIColor orangeColor]
+                                                                                   tintColor:kBPTintColor
                                                                             resultResettable:YES
-                                                                                    schedule:[OCKCareSchedule dailyScheduleWithStartDate:[CommTool firstDateOfCurrentWeek] occurrencesPerDay:1]
+                                                                                    schedule:[self dailyScheduleWithStartYear:2018 month:1 day:1 occurrencesPerDay:1]
                                                                                     userInfo:@{
                                                                                                @"ORKTask":[self makeBloodPressure2AssessmentTask],
                                                                                                @"type":@"bp"
                                                                                                }
                                                                                     optional:NO];
     
-    NSDateComponents* startDate = [[NSDateComponents alloc] initWithYear:2018 month:1 day:20];
-    OCKCareSchedule* schedule = [OCKCareSchedule weeklyScheduleWithStartDate:startDate occurrencesOnEachDay:@[@1,@1,@1,@1,@1,@1,@1,]];
+    
+
     OCKCarePlanThreshold* thresholdPerfect = [OCKCarePlanThreshold numericThresholdWithValue:@70 type:OCKCarePlanThresholdTypeNumericRangeInclusive upperValue:@100 title:@"Healthy blood glucose."];
     OCKCarePlanThreshold* thresholdBad = [OCKCarePlanThreshold numericThresholdWithValue:@180 type:OCKCarePlanThresholdTypeNumericGreaterThanOrEqual upperValue:nil title:@"High blood glucose."];
     
@@ -172,9 +182,9 @@
                                                                               groupIdentifier:@"Vitals"
                                                                                         title:@"Blood Glucose"
                                                                                          text:@"mg/dL"
-                                                                                    tintColor:[UIColor purpleColor]
+                                                                                    tintColor:kBGTintColor
                                                                              resultResettable:NO
-                                                                                     schedule:schedule
+                                                                                     schedule:[self dailyScheduleWithStartYear:2018 month:1 day:1 occurrencesPerDay:1]
                                                                                      userInfo:@{
                                                                                                 @"ORKTask":[self makeBloodGlucoseAssessmentTask],
                                                                                                 @"type":@"bg"
@@ -184,10 +194,10 @@
     OCKCarePlanActivity* temperatureActivity = [OCKCarePlanActivity assessmentWithIdentifier:kActivityIdentifierTH
                                                                              groupIdentifier:@"Vitals"
                                                                                        title:@"Temperature"
-                                                                                        text:@"Oral"
-                                                                                   tintColor:[UIColor orangeColor]
+                                                                                        text:@"degC"
+                                                                                   tintColor:kTHTintColor
                                                                             resultResettable:YES
-                                                                                    schedule:[OCKCareSchedule dailyScheduleWithStartDate:[CommTool firstDateOfCurrentWeek] occurrencesPerDay:1]
+                                                                                    schedule:[self dailyScheduleWithStartYear:2018 month:1 day:1 occurrencesPerDay:1]
                                                                                     userInfo:@{
                                                                                                @"ORKTask":[self makeTemperatureAssessmentTask],
                                                                                                @"type":@"th"
@@ -195,7 +205,7 @@
                                                                                                }
                                                                                     optional:NO];
     
-    _activities = @[bloodPressureActivity, bloodGlucoseActivity, temperatureActivity];//@[cardioActivity, limberUpActivity, targetPracticeActivity,pulseActivity,temperatureActivity,bloodPressureActivity,bloodGlucoseActivity];
+    _activities = @[cardioActivity,targetPracticeActivity,bloodPressureActivity, bloodGlucoseActivity, temperatureActivity];//@[cardioActivity, limberUpActivity, targetPracticeActivity,pulseActivity,temperatureActivity,bloodPressureActivity,bloodGlucoseActivity];
 }
 
 

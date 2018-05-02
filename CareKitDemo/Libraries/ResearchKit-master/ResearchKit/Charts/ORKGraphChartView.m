@@ -37,6 +37,7 @@
 
 #import "ORKChartTypes.h"
 #import "ORKLineGraphChartView.h"
+#import "ORKDiscreteGraphChartView.h"
 #import "ORKXAxisView.h"
 #import "ORKYAxisView.h"
 
@@ -761,7 +762,18 @@ ORK_INLINE CALayer *graphPointLayerWithColor(UIColor *color, BOOL drawPointIndic
     double scrubbingValue = [self scrubbingLabelValueForCanvasXPosition:xPosition plotIndex:plotIndex];
 
     _scrubberThumbView.center = CGPointMake(xPosition + ORKGraphChartViewLeftPadding, scrubberYPosition + TopPadding);
-    _scrubberLabel.text = [NSString stringWithFormat:_decimalFormat, scrubbingValue == ORKDoubleInvalidValue ? 0.0 : scrubbingValue ];
+    
+    
+    if ([self isKindOfClass:[ORKDiscreteGraphChartView class]]) {
+        double valueRange[2] = {0,0};
+        [self scrubbingLabelRangeValueForCanvasXPosition:xPosition plotIndex:plotIndex rangeValue:valueRange];
+        NSString* label1 = [NSString stringWithFormat:_decimalFormat, valueRange[0] == ORKDoubleInvalidValue ? 0.0 : valueRange[0] ];
+        NSString* label2 = [NSString stringWithFormat:_decimalFormat, valueRange[1] == ORKDoubleInvalidValue ? 0.0 : valueRange[1] ];
+        _scrubberLabel.text = [NSString stringWithFormat:@"%@/%@",label1,label2];
+    }else{
+        NSString* label = [NSString stringWithFormat:_decimalFormat, scrubbingValue == ORKDoubleInvalidValue ? 0.0 : scrubbingValue ];
+        _scrubberLabel.text = label;
+    }
     CGSize textSize = [_scrubberLabel.text boundingRectWithSize:CGSizeMake(_plotView.bounds.size.width,
                                                                            _plotView.bounds.size.height)
                                                         options:(NSStringDrawingUsesFontLeading | NSStringDrawingUsesLineFragmentOrigin)
@@ -861,6 +873,21 @@ ORK_INLINE CALayer *graphPointLayerWithColor(UIColor *color, BOOL drawPointIndic
         value = [self scrubbingValueForPlotIndex:plotIndex pointIndex:pointIndex];;
     }
     return value;
+}
+
+- (void)scrubbingLabelRangeValueForCanvasXPosition:(CGFloat)xPosition plotIndex:(NSInteger)plotIndex rangeValue:(double[])rangeValue {
+    double value1 = ORKDoubleInvalidValue;
+    double value2 = ORKDoubleInvalidValue;
+    BOOL snapped = [self isXPositionSnapped:xPosition plotIndex:(NSInteger)plotIndex];
+    if (snapped) {
+        NSInteger pointIndex = [self pointIndexForXPosition:xPosition plotIndex:plotIndex];
+        value1 = [self scrubbingValueForPlotIndex:plotIndex pointIndex:pointIndex];
+        if ([self isKindOfClass:[ORKDiscreteGraphChartView class]]) {
+            value2 = [((ORKValueRangeGraphChartView*)self) scrubbingMininumValueForPlotIndex:plotIndex pointIndex:pointIndex];
+        }
+    }
+    rangeValue[0] = value1;
+    rangeValue[1] = value2;
 }
 
 - (double)canvasYPositionForXPosition:(CGFloat)xPosition plotIndex:(NSInteger)plotIndex {
@@ -1253,6 +1280,10 @@ ORK_INLINE CALayer *graphPointLayerWithColor(UIColor *color, BOOL drawPointIndic
 
 - (double)scrubbingYAxisPointForPlotIndex:(NSInteger)plotIndex pointIndex:(NSInteger)pointIndex {
     return self.yAxisPoints[plotIndex][pointIndex].maximumValue;
+}
+
+- (double)scrubbingMininumValueForPlotIndex:(NSInteger)plotIndex pointIndex:(NSInteger)pointIndex {
+    return self.dataPoints[plotIndex][pointIndex].minimumValue;
 }
 
 #pragma mark - Animation

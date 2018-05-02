@@ -514,7 +514,7 @@ ORK_CLASS_AVAILABLE
  See the `ORKValueRangeGraphChartViewDataSource` protocol.
  */
 @property (nonatomic, weak) id <ORKValueRangeGraphChartViewDataSource> dataSource;
-
+- (double)scrubbingMininumValueForPlotIndex:(NSInteger)plotIndex pointIndex:(NSInteger)pointIndex;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -17,6 +17,7 @@
 #import "CareDataModel.h"
 #import "CarePlanStoreManager.h"
 #import "CommTool.h"
+#import <iHealthLibrarySDK/iHealthLibrarySDK.h>
 
 #define kActivityIdentifierBP @"Blood Pressure"
 #define kActivityIdentifierBG @"Blood Glucose"

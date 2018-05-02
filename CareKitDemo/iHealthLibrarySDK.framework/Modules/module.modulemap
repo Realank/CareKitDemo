@@ -1,0 +1,6 @@
+framework module iHealthLibrarySDK {
+  umbrella header "iHealthLibrarySDK.h"
+
+  export *
+  module * { export * }
+}

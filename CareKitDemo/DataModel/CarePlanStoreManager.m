@@ -67,7 +67,7 @@
                                                                           [OCKContactInfo phone:@"186-3098-2942"],
                                                                           [OCKContactInfo email:@"realank@126.com"],
                                                                           ]
-                                                              tintColor:[UIColor redColor]
+                                                              tintColor:UIColorFromRGB(0xbf1122)
                                                                monogram:@"MR"
                                                                   image:nil];
     OCKContact* contactNurse = [[OCKContact alloc] initWithContactType:OCKContactTypeCareTeam
@@ -77,7 +77,7 @@
                                                                           [OCKContactInfo phone:@"186-3098-2943"],
                                                                           [OCKContactInfo email:@"realank@127.com"],
                                                                           ]
-                                                              tintColor:[UIColor greenColor]
+                                                              tintColor:UIColorFromRGB(0x499830)
                                                                monogram:@"MR"
                                                                   image:nil];
     OCKContact* contactFriend = [[OCKContact alloc] initWithContactType:OCKContactTypePersonal
@@ -87,7 +87,7 @@
                                                                          [OCKContactInfo phone:@"186-3098-2944"],
                                                                          [OCKContactInfo email:@"realank@128.com"],
                                                                          ]
-                                                             tintColor:[UIColor blueColor]
+                                                             tintColor:UIColorFromRGB(0xcaaf1c)
                                                               monogram:@"MS"
                                                                  image:nil];
     _contacts = @[contactDoctor,contactNurse,contactFriend];
